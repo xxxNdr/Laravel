@@ -2,9 +2,7 @@
 
 ## Configurazione del Database
 
-1. Importa il file `estetica.sql` nel tuo database MySQL. Puoi farlo tramite MySQL Workbench oppure da linea di comando:
-
-mysql -u tuo_utente -p nome_database < percorso/estetica.sql
+1. Importa il file `estetica.sql` nel tuo database MySQL
 
 
 2. Modifica il file `.env` nella root del progetto per impostare le credenziali del database:
