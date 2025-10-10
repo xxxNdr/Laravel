@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const dataInput = document.getElementById("data-input");
     const formContainer = document.getElementById("form-container");
 
+    // ATTIVO SANITIZZAZIONE IN REAL TIME
+    realTime();
+
     // INIZIALIZZAZIONE CALENDARIO
     flatpickr(dataInput, {
         dateFormat: "Y-m-d",
@@ -130,9 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Mostro il form dopo aver selezionato l'ora
                         if (formContainer) {
                             formContainer.style.display = "block";
-
-                            // ATTIVO SANITIZZAZIONE IN REAL TIME
-                            realTime();
 
                             // Popola i campi hidden del form
                             document.getElementById(
