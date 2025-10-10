@@ -2,7 +2,7 @@
 
 ## Configurazione del Database
 
-1. Importa il file `estetica.sql` nel tuo database MySQL:
+1. Importa il file `estetica.sql` nel tuo database MySQL
 
 
 2. Modifica il file `.env` nella root del progetto per configurare le credenziali del database.
