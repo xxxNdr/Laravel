@@ -1,4 +1,11 @@
 import { clearContainer, removeActiveClass, createMessage } from "./utils.js";
+import {
+    sanitizeMobile,
+    sanitizeName,
+    sanitizeString,
+    validateForm,
+    realTime,
+} from "./sanitize.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     let selectedTrattamento = null;
@@ -123,6 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Mostro il form dopo aver selezionato l'ora
                         if (formContainer) {
                             formContainer.style.display = "block";
+
+                            // ATTIVO SANITIZZAZIONE IN REAL TIME
+                            realTime();
+
                             // Popola i campi hidden del form
                             document.getElementById(
                                 "form-id-trattamento"
@@ -147,4 +158,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 orariContainer.appendChild(msg);
             });
     });
+
+    // GESTIONE VALIDAZIONE FORM
+    const form = document.querySelector("form");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            const nomeInput = document.getElementById("nome");
+            const cognomeInput = document.getElementById("cognome");
+            const telefonoInput = document.getElementById("telefono");
+
+            // sanitizzo prima di validare
+            const nome = sanitizeName(nomeInput.value, 20);
+            const cognome = sanitizeName(cognomeInput.value, 30);
+            const telefono = sanitizeMobile(telefonoInput.value);
+
+            // valido i campi, cioè controllo che esistano e che siano più lunghi di 2 caratteri
+            const validation = validateForm(nome, cognome, telefono);
+            if (!validation.Valido) {
+                e.preventDefault();
+                // se non è valido blocca l'invio del form
+
+                // mostro gli errori
+                alert(validation.errors.join("\n"));
+                return false;
+            }
+            // assegno le sanitizzazioni prima dell'invio del form
+            nomeInput.value = nome;
+            cognomeInput.value = cognome;
+            telefonoInput.value = telefono;
+        });
+    }
 });
