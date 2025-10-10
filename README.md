@@ -7,8 +7,6 @@
 
 2. Modifica il file `.env` nella root del progetto per configurare le credenziali del database.
 
----
-
 ## Clonazione del repository e installazione
 
 Clona il repository:
@@ -22,9 +20,6 @@ cd Laravel/18
 Installa le dipendenze:
 
 composer install
-
-
----
 
 ## Generazione della chiave dell'applicazione
 
