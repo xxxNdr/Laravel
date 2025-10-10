@@ -13,35 +13,6 @@ class ClientiSeeder extends Seeder
      */
     public function run(): void
     {
-        $clienti = [
-            [
-                'nome' => 'Giulia',
-                'cognome' => 'Rossi',
-                'telefono' => '3333333333'
-            ],
-            [
-                'nome' => 'Lucia',
-                'cognome' => 'Bianchi',
-                'telefono' => '4444444444'
-            ],
-            [
-                'nome' => 'Francesca',
-                'cognome' => 'Verdi',
-                'telefono' => '5555555555'
-            ],
-            [
-                'nome' => 'Josephine',
-                'cognome' => 'Gialli',
-                'telefono' => '6666666666'
-            ]
-        ];
-
-        foreach ($clienti as $cliente) {
-            Cliente::updateOrCreate([
-                'nome' => $cliente['nome'],
-                'cognome' => $cliente['cognome'],
-                'telefono' => $cliente['telefono']
-            ], $cliente);
-        }
+        Cliente::factory()->count(10)->create();
     }
 }

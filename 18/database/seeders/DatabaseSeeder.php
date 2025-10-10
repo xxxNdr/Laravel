@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TrattamentiSeeder::class,
             ClientiSeeder::class,
-            OrariAperturaSeeder::class,
         ]);
     }
 }

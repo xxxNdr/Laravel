@@ -25,15 +25,15 @@ CREATE TABLE `orari_apertura` (
  );
 
 CREATE TABLE `clienti` (
-   `id` int(11) NOT NULL AUTO_INCREMENT,
-   `nome` varchar(20) NOT NULL,
-   `cognome` varchar(30) NOT NULL,
-   `telefono` varchar(20) NOT NULL,
-   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-   PRIMARY KEY (`id`),
-   UNIQUE KEY `telefono` (`telefono`)
- );
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(20) NOT NULL,
+  `cognome` varchar(30) NOT NULL,
+  `telefono` varchar(30) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `telefono` (`telefono`)
+);
  
 CREATE TABLE `prenotazioni` (
    `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -133,6 +133,7 @@ select * from trattamenti;
 select * from orari_apertura;
 select * from clienti;
 select * from users;
+select * from cache_locks;
 
 show create table clienti;
 show create table orari_apertura;
@@ -145,23 +146,13 @@ describe orari_apertura;
 describe clienti;
 describe prenotazioni;
 
+
+
 -- MODIFICHE TABELLE
 
-ALTER TABLE trattamenti
-ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-
-ALTER TABLE orari_apertura
-ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-
-ALTER TABLE clienti
-ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-
-ALTER TABLE prenotazioni
-ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+alter table clienti modify column telefono varchar(30) not null;
+alter table clienti drop index telefono;
+alter table clienti add unique key telefono (telefono);
 
 
 -- GESTIONE TRIGGER
