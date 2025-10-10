@@ -8,8 +8,6 @@
 2. Modifica il file `.env` nella root del progetto per impostare le credenziali del database:
 
 
----
-
 ## Clonazione del repository ed installazione
 
 git clone https://github.com/xxxNdr/Laravel.git
