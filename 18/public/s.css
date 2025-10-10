@@ -1,0 +1,161 @@
+/* RESET E BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ff7ea9;
+    background-image: radial-gradient(
+        circle at center,
+        #ff7ea9 30%,
+        #ffffff 100%
+    );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* VARIABILI */
+:root {
+    --bs-primary: #ff7ea9;
+    --bs-success: #28a745;
+}
+
+/* BOTTONE WELCOME */
+.welcome-btn {
+    display: inline-block;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* BOTTONI TRATTAMENTO E ORA */
+.trattamento-btn {
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    text-align: center;
+    white-space: normal;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem;
+    word-break: break-word;
+}
+
+.trattamento-btn.active {
+    background-color: var(--bs-primary);
+    color: white;
+    border-color: var(--bs-success);
+    border-width: 5px;
+}
+
+.ora-btn.active {
+    background-color: var(--bs-success);
+    color: white;
+    border-color: var(--bs-success);
+}
+
+/* TITOLI */
+.title-prenotazioni {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-align: center;
+    margin: 6rem 0 3rem 0;
+    padding: 0 1rem;
+}
+
+.welcome-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 7rem;
+    text-align: center;
+}
+
+/* GRID E CARD */
+.trattamenti-grid {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 0.5rem;
+}
+
+.glass-card {
+    padding: 2rem 0;
+}
+
+/* FORM SEMITRASPARENTE */
+#form-container .card, #data-input {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 5px 1 #000;
+}
+
+/* MEDIA QUERIES: TABLET E MOBILE */
+@media (max-width: 768px) {
+    .title-prenotazioni {
+        margin-top: 4rem;
+        padding: 0 0.5rem;
+    }
+
+    .trattamento-btn {
+        padding: 0 0.25rem;
+        min-height: 70px;
+    }
+
+    .trattamenti-grid {
+        padding: 0 0.25rem;
+    }
+
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    .welcome-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        margin-bottom: 9rem;
+    }
+
+    .glass-card {
+        padding: 1.5rem;
+    }
+}
+
+/* MEDIA QUERIES: SMARTPHONE PICCOLI */
+@media (max-width: 360px) {
+    .trattamento-btn {
+        font-size: 0.9rem;
+        min-height: 70px;
+        padding: 0.5rem 0.25rem;
+    }
+
+    .trattamenti-grid {
+        padding: 0 0.15rem;
+    }
+
+    .container {
+        padding: 0 0.25rem;
+        max-width: 100%;
+    }
+
+    .row.g-3 {
+        margin: 0 -0.25rem;
+    }
+
+    .col-12.px-2 {
+        padding: 0 0.25rem;
+    }
+
+    .welcome-title {
+        font-size: 2.8rem;
+        margin-bottom: 8rem;
+    }
+
+    .glass-card {
+        padding: 1rem;
+    }
+}
