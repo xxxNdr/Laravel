@@ -1,13 +1,18 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container py-4">
+    <div class="container py-4 my-5">
         <h1 class="title-prenotazioni fw-bold text-center mb-5">PRENOTA IL TUO APPUNTAMENTO</h1>
 
-        <div class="row g-3 justify-content-center trattamenti-grid mx-0">
+        <div class="row g-3 justify-content-center trattamenti-grid mx-0 my-5">
             @foreach ($trattamenti as $t)
                 <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center px-2">
-                    <button class="btn btn-outline-primary w-100 py-3 trattamento-btn" data-id="{{ $t->id }}">
-                        {{ $t->nome }}
+                    <button class="btn btn-outline-primary w-100 py-3 trattamento-btn d-flex flex-column m-2"
+                        data-id="{{ $t->id }}">
+                        <div class="fw-bold fs-4">{{ $t->nome }}</div>
+                        <!-- div, naturalmente display block prende tutto lo spazio
+                                    disponibile e va a capo da solo -->
+                        <div class="fs-5">{{ $t->durata_minuti }} minuti</div>
+                        <div class="fs-5">{{ $t->prezzo }} €</div>
                     </button>
                 </div>
             @endforeach
@@ -15,8 +20,8 @@
 
         <div id="calendar-container" class="my-5 text-center" style="display: none">
             {{-- calendar-container rimane nascosto finchè non si sceglie un trattaemnto --}}
-            <h3 class="fw-bold mb-3">SELEZIONA UNA DATA</h3>
-            <input type="date" id="data-input" class="form-control w-auto d-inline-block text-center fw-bold">
+            <h2 class="fw-bold mb-3">SELEZIONA UNA DATA</h2>
+            <input type="date" id="data-input" class="form-control w-auto d-inline-block text-center fw-bold fs-5">
             <div id="orari-container" class="my-5"></div>
             {{-- orari-container conterrà i bottoni degli orari liberi --}}
         </div>
