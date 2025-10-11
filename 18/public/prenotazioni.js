@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     flatpickr(dataInput, {
         dateFormat: "Y-m-d",
         minDate: "today",
-        disable: [(date) => date.getDay() === 0],
+        disable: [(date) => date.getDay() === 1],
     });
 
     document.querySelectorAll(".trattamento-btn").forEach((btn) => {
