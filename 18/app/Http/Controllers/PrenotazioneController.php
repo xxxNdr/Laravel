@@ -98,18 +98,11 @@ CLIENTE: vista per i clienti che prenotano online
         $clienti = Cliente::all();
         $trattamenti = Trattamento::all();
         $id_cliente = request('id_cliente', $prenotazione->id_cliente);
-        /* ESEMPIO DI COSA FA REQUEST
-
-        1. PRIMO ACCESSO: prenotazione nel DB = 15 Gennaio, ore 14:00
-        2. Cliente modifica ONLINE: cambia a 15 Gennaio, ore 16:00  
-        3. Clicca "Salva" → le 16:00 sono già occupate
-        4. Validazione fallisce → ritorna al form
-        5. request('ora_inizio') = "16:00" (valore che il cliente aveva inserito)
-        6. $prenotazione->ora_inizio = "14:00" (valore originale dal DB, ancora invariato)
-        7. RISULTATO: $ora_inizio = "16:00" (mantiene la scelta del cliente)
-        8. $orari_disponibili = ['14:30', '15:00', '15:30'] (orari liberi reali)
-        9. Il cliente VEDE: il suo input "16:00" + lista orari disponibili
-        10. Il cliente SCEGLIE: un orario libero dalla lista (es: '15:30')
+        /*
+        La funzione request serve per leggere i dati che arrivano dalla richiesta HTTP, da un form
+        Ha due comportamenti: se l'utente ha un id_cliente lo restituisce altrimenti usa il secondo argomento
+        Prendi l'id cliente che arriva dalla richiesta altrimenti usa quello salvato nel database
+        */
         */
         $idTrattamento = request('id_trattamento', $prenotazione->id_trattamento);
         $data = request('data', $prenotazione->data);
