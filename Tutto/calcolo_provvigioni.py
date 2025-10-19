@@ -8,7 +8,6 @@ db_path = os.path.join(script_dir, "database", "vendite.sqlite")
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
-# ESEGUO UNA QUERY PER SELEZIONARE LE VENDITE SENZA PROVVIGIONE CALCOLATA
 cursor.execute("SELECT id, agente, importo FROM vendite WHERE provvigione IS NULL")
 vendite = cursor.fetchall()
 
