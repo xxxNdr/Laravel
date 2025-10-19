@@ -1,4 +1,5 @@
 import { aggiornaTabella } from "./aggiornaTabella.js";
+import { Alert } from "./alert.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     if (performance.getEntriesByType("navigation")[0].type !== "reload") return;
@@ -17,8 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const data = await response.json();
         if (data.success) {
-            alert(data.message + "\n\nOutput:\n" + JSON.stringify(data.output, null, 2));
-
+            Alert(data);
             aggiornaTabella(data.output);
         }
     } catch (err) {
