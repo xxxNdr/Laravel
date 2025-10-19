@@ -66,8 +66,7 @@ class VenditaController extends Controller
 
     public function calcolaProvvigioni()
     {
-        $scriptPATH = base_path('calcolo_provvigioni.py');
-        shell_exec("py " . escapeshellarg($scriptPATH) . " 2>&1");
+        shell_exec(sprintf('py "%s" 2>&1', base_path('calcolo_provvigioni.py')));
 
         /* CRUCIALE!
         in questo modo ho i valori aggiornati nel database dopo il calcolo di Python
