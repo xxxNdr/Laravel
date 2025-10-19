@@ -2,7 +2,7 @@
 import sqlite3
 import os
 
-# Ottieni il percorso della directory dello script
+# Ottengo il percorso della directory dello script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Costruisci il percorso assoluto del database
