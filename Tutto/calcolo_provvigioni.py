@@ -16,6 +16,7 @@ for vendita_id, agente, importo in vendite:
     cursor.execute(
         "UPDATE vendite SET provvigione = ? WHERE id = ?", (provvigione, vendita_id)
     )
+    print(f"La vendita {vendita_id} di {agente} ha una provvigione di {provvigione}")
 
 conn.commit()
 conn.close()

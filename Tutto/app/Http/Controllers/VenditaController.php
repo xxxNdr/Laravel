@@ -72,7 +72,7 @@ class VenditaController extends Controller
         /* CRUCIALE!
         in questo modo ho i valori aggiornati nel database dopo il calcolo di Python
         Se mostro solo l'output di Python il DB non è aggiornato */
-        $vendite = DB::table('vendite')->select('id','agente', 'importo', 'provvigione', 'data_vendita', 'azione')
+        $vendite = DB::table('vendite')->select('id', 'agente', 'importo', 'provvigione', 'data_vendita', 'azione')
             ->orderBy('data_vendita', 'desc')
             ->get();
 
