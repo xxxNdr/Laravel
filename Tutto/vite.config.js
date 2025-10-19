@@ -8,8 +8,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: {
-        host: "XXXNDR",
-        port: 5173,
-    },
 });

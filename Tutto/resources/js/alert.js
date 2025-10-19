@@ -5,10 +5,7 @@ function Alert(data) {
         .map(([k, v]) => `${k}: ${v}`)
         .join("\n");
 
-    let custom = data.message
-        ? data.message.replace(/127\.0\.0\.1:8000/g, "XXXNDR")
-        : "";
-    alert(custom + "\n\nUltimo Inserimento:\n" + testo);
+    alert(data.message + "\n\nUltimo Inserimento:\n" + testo);
 }
 
 export { Alert };
