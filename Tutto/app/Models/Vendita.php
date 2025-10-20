@@ -26,6 +26,19 @@ class Vendita extends Model
     ISTANZA → Agisce su un record già esistente
     */
 
+    // evento che si attiva prima di aggiornare/salvare
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($vendita) {
+            // se l'importo è cambiato azzera la provvigione
+            if ($vendita->isDirty('importo')) {
+                $vendita->provvigione = null;
+            }
+        });
+    }
+    
     // crea una vendita
     public static function crea(array $data)
     {
@@ -42,11 +55,6 @@ class Vendita extends Model
     public static function provvigioni()
     {
         shell_exec(sprintf('py "%s" 2>&1', base_path('calcolo_provvigioni.py')));
-
-        DB::disconnect('sqlite');
-        DB::reconnect('sqlite');
-
-
         return self::orderBy('data_vendita', 'desc')->get();
     }
 
