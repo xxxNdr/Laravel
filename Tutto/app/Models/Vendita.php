@@ -20,6 +20,11 @@ class Vendita extends Model
         'data_vendita'
     ];
 
+    /*
+    STATICO → Agisce su più record o su uno ancora non esistente
+    ISTANZA → Agisce su un record già esistente
+    */
+
     // crea una vendita
     public static function crea(array $data)
     {

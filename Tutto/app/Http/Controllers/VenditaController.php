@@ -4,22 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendita;
 use App\Http\Requests\StoreVendita;
-use App\Http\Requests\UpdateVendita; 
+use App\Http\Requests\UpdateVendita;
 
 class VenditaController extends Controller
 {
     // Mostra vendite e form
     public function index()
     {
-        return view('vendite.index', ['vendite'=>Vendita::impagina(10)]);
+        return view('vendite.index', ['vendite' => Vendita::impagina(10)]);
     }
 
     // Salvo la vendita
     public function store(StoreVendita $request)
     {
-     Vendita::crea($request->validated());
-     /* validate() ritorna un array contenente solo i dati validati da FormRequest */
-     return redirect()->route('vendite.index')->with('success', 'Vendita inserita correttamente');
+        Vendita::crea($request->validated());
+        /* validate() ritorna un array contenente solo i dati validati da FormRequest */
+        return redirect()->route('vendite.index')->with('success', 'Vendita inserita correttamente');
+    }
+
+    public function update(UpdateVendita $request, Vendita $vendita)
+    {
+        $vendita->update($request->validated());
+        return redirect()->route('vendite.index')->with('success', 'Vendita aggiornata con successo');
     }
 
     // Aggiorna la vendita
@@ -38,7 +44,7 @@ class VenditaController extends Controller
     public function calcolaProvvigioni()
     {
         $vendite = Vendita::provvigioni();
-        
+
         return response()->json([
             'success' => true,
             'message' => 'Calcolo provvigioni completato con successo.',
