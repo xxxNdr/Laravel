@@ -24,11 +24,11 @@ class StoreVendita extends FormRequest
         return [
             'agente' => 'required|string|max:50',
             'importo' => 'required|numeric|min:1|decimal:0,2',
-            'data_vendita' => 'required|date'
+            'data_vendita' => 'required|date|before_or_equal:today'
         ];
     }
 
-    public function message(): array
+    public function messages(): array
     {
         return [
             'data_vendita.before_or_equal' => 'La data della vendita non può essere futura'

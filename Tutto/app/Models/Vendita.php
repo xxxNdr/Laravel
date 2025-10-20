@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 
 class Vendita extends Model
 {
@@ -41,6 +42,11 @@ class Vendita extends Model
     public static function provvigioni()
     {
         shell_exec(sprintf('py "%s" 2>&1', base_path('calcolo_provvigioni.py')));
+
+        DB::disconnect('sqlite');
+        DB::reconnect('sqlite');
+
+
         return self::orderBy('data_vendita', 'desc')->get();
     }
 
