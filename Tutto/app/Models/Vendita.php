@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Vendita extends Model
 {
     use HasFactory;
+
     protected $table = 'vendite';
     protected $fillable = [
         /* fillable = campi riempibili in assegnazione di massa
@@ -18,4 +19,6 @@ class Vendita extends Model
         'importo',
         'data_vendita'
     ];
+
+    
 }
